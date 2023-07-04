@@ -1,0 +1,16 @@
+{
+  "name": "lolja_cypress_testes",
+  "version": "1.0.0",
+  "description": "Testes utilizando cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Bruno Lima",
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "^12.16.0",
+    "faker-br": "^0.4.1"
+  }
+}
