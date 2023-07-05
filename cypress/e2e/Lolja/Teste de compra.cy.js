@@ -1,6 +1,3 @@
-import { faker } from "@faker-js/faker/locale/pt_BR";
-import faker_br from "faker-br"
-
 describe('Teste de compra',() =>{
     beforeEach(() => {
         cy.visit('https://www.lolja.com.br')
