@@ -51,13 +51,17 @@ describe('Teste de categoria', ()=>{
     it('Filtro de tamanho', ()=>{
         cy.get(':nth-child(2) > .menu-title').click({force: true});
         cy.get('.title').should('contain.text', 'CAMISETAS');
-        cy.get(':nth-child(3) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)').click({force:true});
+        cy.get(':nth-child(3) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)')
+            .should('contains.text', 'M')
+            .click({force:true});
     });
 
     it('Filtro de sexo', ()=>{
         cy.get(':nth-child(2) > .menu-title').click({force: true});
         cy.get('.title').should('contain.text', 'CAMISETAS');
-        cy.get(':nth-child(4) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)').click({force:true});
+        cy.get(':nth-child(4) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)')
+            .should('contains.text', 'FEMININO')
+            .click({force:true});
     });
 
     it('Filtro de preço', ()=>{
@@ -68,17 +72,36 @@ describe('Teste de categoria', ()=>{
     it('Filtro de ordem', ()=>{
         cy.get(':nth-child(2) > .menu-title').click({force: true});
         cy.get('.title').should('contain.text', 'CAMISETAS');
-        cy.get('.vnda-products-filter-vertical-sort-content > .component-products-filter-block > :nth-child(4) > .list-value-image').click({force:true});
+        cy.get('.vnda-products-filter-vertical-sort-content > .component-products-filter-block > :nth-child(4)')
+            .should('contains.text', 'Maior preço')
+            .click({force:true});
 
     });
 
     it('Todos os filtros', ()=>{
         cy.get(':nth-child(2) > .menu-title').click({force: true});
         cy.get('.title').should('contain.text', 'CAMISETAS');
+
+        cy.get(':nth-child(1) > .color-value-text').click({force:true});
+        cy.get(':nth-child(3) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)').click({force:true});
+        cy.get(':nth-child(4) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)').click({force:true});
+        cy.get('.vnda-products-filter-vertical-sort-content > .component-products-filter-block > :nth-child(4)').click({force:true});
     });
 
-    it('Limpar filtros', ()=>{
+    it.only('Limpar filtros', ()=>{
         cy.get(':nth-child(2) > .menu-title').click({force: true});
         cy.get('.title').should('contain.text', 'CAMISETAS');
+
+        cy.get(':nth-child(1) > .color-value-text').click({force:true});
+        cy.get(':nth-child(3) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)').click({force:true});
+        cy.get(':nth-child(4) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > :nth-child(2)').click({force:true});
+        cy.get('.vnda-products-filter-vertical-sort-content > .component-products-filter-block > :nth-child(4)').click({force:true});
+
+        cy.get('.vnda-products-filter-vertical-button-clear').click({force:true})
+
+        cy.get('.vnda-products-filter-vertical-properties-content > .component-products-filter-block > .component-products-filter-text-gray-900').should('not.exist');
+        cy.get(':nth-child(4) > .vnda-products-filter-vertical-properties-content > .component-products-filter-grid > .component-products-filter-border-b').should('not.exist');
+        cy.get('.component-products-filter-text-gray-900 > .list-value-image').should('not.exist');
+        
     });
 })
