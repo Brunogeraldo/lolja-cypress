@@ -6,7 +6,7 @@ describe('Login',()=>{
         cy.get('#search-products').type('test')
     });
 
-    it.only('Tentativa de login com usuario errado',{ scrollBehavior: false }, ()=>{
+    it('Tentativa de login com usuario errado',{ scrollBehavior: false }, ()=>{
         cy.get('a.user').click({force: true});
         cy.get('div.cmp-login-block > :nth-child(2) > .cmp-login-block').click({force: true});
         
